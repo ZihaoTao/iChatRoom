@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="iChatRoot.server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/iChatRoot_server_jar</output-path>
+    <root id="archive" name="iChatRoot.server.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/server/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="iChatRoot.server" />
+      <element id="module-output" name="iChatRoot.foo" />
+      <element id="module-output" name="iChatRoot.lib-clink" />
+    </root>
+  </artifact>
+</component>
