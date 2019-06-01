@@ -1,18 +1,26 @@
 import bean.ServerInfo;
+import Provider.IoContext;
+import Provider.impl.IoSelectorProvider;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientTest {
-    private static boolean done;
+    private static boolean done = false;
     public static void main(String[] args) throws IOException {
         ServerInfo info = UDPSearcher.searchServer(10000);
         System.out.println("Server:" + info);
         if(info == null) return;
         int size = 0;
         List<TCPClient> list = new ArrayList<>();
-        for(int i = 0; i < 500; i++) {
+
+        IoContext.setup()
+                .ioProvider(new IoSelectorProvider())
+                .start();
+
+
+        for(int i = 0; i < 5; i++) {
             try {
                 TCPClient tcpClient = TCPClient.startWith(info);
                 if(tcpClient == null) {
@@ -25,7 +33,7 @@ public class ClientTest {
                 e.printStackTrace();
             }
             try {
-                Thread.sleep(5);
+                Thread.sleep(20);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -59,5 +67,7 @@ public class ClientTest {
         for(TCPClient tcpClient: list) {
             tcpClient.exit();
         }
+
+        IoContext.close();
     }
 }

@@ -1,4 +1,6 @@
 import bean.ServerInfo;
+import Provider.IoContext;
+import Provider.impl.IoSelectorProvider;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +9,10 @@ import java.io.InputStreamReader;
 
 public class Client {
     private static final int TIMEOUT = 30000;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        IoContext.setup()
+                .ioProvider(new IoSelectorProvider())
+                .start();
         // get server address
         ServerInfo info = UDPSearcher.searchServer(TIMEOUT);
         System.out.println("Server:" + info);
@@ -27,6 +32,8 @@ public class Client {
                 }
             }
         }
+
+        IoContext.close();
     }
 
     private static void write(TCPClient tcpClient) throws IOException {
@@ -40,5 +47,6 @@ public class Client {
             }
         } while(true);
     }
+
 }
 

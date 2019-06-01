@@ -1,95 +1,43 @@
 import bean.ServerInfo;
+import core.Connector;
 import utils.CloseUtils;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
+import java.nio.channels.SocketChannel;
 
-class TCPClient {
-    private final Socket socket;
-    private final ReadHandler readHandler;
-    private final PrintStream printStream;
+class TCPClient extends Connector {
 
-    TCPClient(Socket socket, ReadHandler readHandler) throws IOException {
-        this.socket = socket;
-        this.readHandler = readHandler;
-        printStream = new PrintStream(socket.getOutputStream());
+    TCPClient(SocketChannel socketChannel) throws IOException {
+        setup(socketChannel);
     }
 
     void exit() {
-        readHandler.exit();
-        CloseUtils.close(printStream);
-        CloseUtils.close(socket);
+        CloseUtils.close(this);
     }
 
-    void send(String msg) {
-        printStream.println(msg);
+    @Override
+    public void onChannelClosed(SocketChannel channel) {
+        super.onChannelClosed(channel);
+        System.out.println("Connection closed, cannot read data.");
     }
 
     static TCPClient startWith(ServerInfo serverInfo) throws IOException {
-        Socket socket = new Socket();
-        socket.setSoTimeout(3000);
-        System.out.println("Begin to connect server, ");
-        socket.connect(new InetSocketAddress(Inet4Address.getByName(serverInfo.getAddress()), serverInfo.getPort()), 3000);
+        SocketChannel socketChannel = SocketChannel.open();
 
-        System.out.println("Client Info: " + socket.getLocalAddress() + " P: " + socket.getLocalPort());
-        System.out.println("Server Info: " + socket.getInetAddress() + " P: " + socket.getPort());
+        System.out.println("Begin to connect server, ");
+        socketChannel.connect(new InetSocketAddress(Inet4Address.getByName(serverInfo.getAddress()), serverInfo.getPort()));
+
+        System.out.println("Client Info: " + socketChannel.getLocalAddress().toString());
+        System.out.println("Server Info: " + socketChannel.getRemoteAddress().toString());
 
         try {
-            ReadHandler readHandler = new ReadHandler(socket.getInputStream());
-            readHandler.start();
-            return new TCPClient(socket, readHandler);
+            return new TCPClient(socketChannel);
         } catch (Exception e) {
             System.out.println("[Error] " + e);
-            CloseUtils.close(socket);
+            CloseUtils.close(socketChannel);
         }
         return null;
-    }
-
-
-    // Client system in
-    static class ReadHandler extends Thread {
-        private boolean done = false;
-        private final InputStream inputStream;
-
-        ReadHandler(InputStream inputStream) {
-            this.inputStream = inputStream;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            try {
-                BufferedReader socketInput = new BufferedReader(new InputStreamReader(inputStream));
-                do {
-                    String str;
-                    try {
-                        str = socketInput.readLine();
-                    } catch (SocketTimeoutException e) {
-                        continue;
-                    }
-
-                    if (str == null) {
-                        System.out.println("Connection closed");
-                        break;
-                    }
-
-                    System.out.println(str);
-                } while (!done);
-            } catch (Exception e) {
-                if(!done) {
-                    System.out.println("[Error] " + e.getMessage());
-                }
-            } finally {
-                CloseUtils.close(inputStream);
-            }
-        }
-
-        void exit() {
-            done = true;
-            CloseUtils.close(inputStream);
-        }
     }
 }

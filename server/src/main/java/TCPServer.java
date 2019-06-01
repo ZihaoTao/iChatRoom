@@ -83,19 +83,17 @@ class TCPServer implements ClientHandler.ClientHandlerCallback{
     }
 
     @Override
-    public void onNewMessageArrive(final ClientHandler clientHandler, final String msg) {
-        System.out.println("Received from [" + clientHandler.getClientInfo() + "]: " + msg);
+    public void onNewMessageArrive(final ClientHandler handler, final String msg) {
         forwardingThreadPoolExecutor.execute(() -> {
             synchronized (TCPServer.this) {
-                for (ClientHandler i : clientHandlerList) {
-                    if(clientHandler.equals(i)) {
+                for (ClientHandler clientHandler : clientHandlerList) {
+                    if (clientHandler.equals(handler)) {
                         continue;
                     }
                     clientHandler.send(msg);
                 }
             }
         });
-
     }
 
     private class ClientListener extends Thread{
@@ -130,7 +128,6 @@ class TCPServer implements ClientHandler.ClientHandlerCallback{
                             SocketChannel socketChannel = serverSocketChannel.accept();
                             try {
                                 ClientHandler clientHandler = new ClientHandler(socketChannel, TCPServer.this);
-                                clientHandler.readToPrint();
                                 synchronized (TCPServer.this) {
                                     clientHandlerList.add(clientHandler);
                                 }

@@ -1,11 +1,20 @@
 import constants.TCPConstants;
+import Provider.IoContext;
+import Provider.impl.IoSelectorProvider;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ *  The Server, input "00bye00" to close
+ */
 public class Server {
     public static void main(String[] args) throws IOException {
+        // Start IO
+        IoContext.setup()
+                .ioProvider(new IoSelectorProvider())
+                .start();
         // TCP connection
         TCPServer tcpServer = new TCPServer(TCPConstants.PORT_SERVER);
 
@@ -14,7 +23,7 @@ public class Server {
             System.out.println("Cannot start server");
             return;
         }
-        // UDP connect
+        // UDP connection
         UDPProvider.start(TCPConstants.PORT_SERVER);
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,8 +35,9 @@ public class Server {
             tcpServer.broadcast(str);
         } while(!"00bye00".equalsIgnoreCase(str));
 
-        System.out.println(str);
         tcpServer.stop();
         UDPProvider.stop();
+
+        IoContext.close();
     }
 }
