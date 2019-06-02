@@ -10,3 +10,7 @@ IP and port back to client.
 2. Client uses the IP and port to build TCP connection with Server.
 3. NIO optimization: replace threads with thread pools to receive and send data, decrease
 number of threads and CPU usage of Server.
+Previous:
+![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg)
+Now:
+![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg)
