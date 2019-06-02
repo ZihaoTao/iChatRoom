@@ -7,10 +7,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc6946f5-9177-4a14-bdcd-c64d5bd1e4ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="bc6946f5-9177-4a14-bdcd-c64d5bd1e4ca" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -70,8 +67,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="324">
-                <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="5" />
+              <first_editor relative-caret-position="270">
+                <caret line="15" column="69" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
               </first_editor>
               <second_editor />
             </state>
@@ -441,12 +438,12 @@
       <workItem from="1559413059638" duration="8652000" />
       <workItem from="1559433598815" duration="321000" />
       <workItem from="1559433958908" duration="2740000" />
-      <workItem from="1559438966750" duration="421000" />
+      <workItem from="1559438966750" duration="896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41573000" />
+    <option name="totallyTimeSpent" value="42048000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -459,9 +456,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4983165" visible="true" weight="0.10729614" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4983165" visible="true" weight="0.10729614" />
       <window_info id="Structure" order="1" sideWeight="0.5016835" side_tool="true" weight="0.22246066" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -476,7 +472,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32826748" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3283767" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14126395" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14126395" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32908705" />
@@ -788,8 +784,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="324">
-            <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="5" />
+          <first_editor relative-caret-position="270">
+            <caret line="15" column="69" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
           </first_editor>
           <second_editor />
         </state>
