@@ -11,7 +11,7 @@ IP and port back to client.
 3. NIO optimization: replace threads with thread pools to receive and send data, decrease
 number of threads and CPU usage of Server. 
 
-
+<figure class="half">
 Previous: 
 
 ![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg) 
@@ -19,4 +19,5 @@ Previous:
 Now: 
 
 ![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg) 
+</figure>
 
