@@ -1,2 +1,4 @@
 # iChatRoom
-Java UDP/TCP NIO
+
+## Introduction:
+NIO Socket model:
