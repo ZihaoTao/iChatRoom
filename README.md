@@ -11,12 +11,33 @@ IP and port back to client.
 3. NIO optimization: replace threads with thread pools to receive and send data, decrease
 number of threads and CPU usage of Server. 
 
+![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg) ![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg)
 
-Previous: 
 
-![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg){:height="50%" width="50%"} 
 
-Now: 
+## Installation
 
-![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg){:height="50%" width="50%"}
-
+JDK: 
+* create file:
+```
+> cd /
+> mkdir developer
+> cd developer
+```
+* download:
+JDK url will be invalid after a period of time. Please download on www.oracle.com
+```
+> wget http://xxx/jdk-8u144-linux-x64xxxxx.rpm
+```
+* remove suffix
+```
+> mv jdk-8u144-linux-x64.rpm jdk-8u144-linux-x64.rpmxxxxxxxxx
+```
+* grant privileges
+```
+> chmod 777 jdk-8u144-linux-x64.rpm
+```
+* installation
+```
+> rpm -ivh jdk-8u144-linux-x64.rpm
+```
