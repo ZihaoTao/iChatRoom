@@ -14,10 +14,11 @@ number of threads and CPU usage of Server.
 <figure class="half">
 Previous: 
 
-![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg) 
+<img src="https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg">
 
 Now: 
 
-![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg) 
+<img src="https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg">
+
 </figure>
 
