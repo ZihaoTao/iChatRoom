@@ -12,8 +12,9 @@ IP and port back to client.
 number of threads and CPU usage of Server. 
 
 
-Previous:
-![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg)
-Now:
-![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg)
+Previous: 
+![previous](https://github.com/ZihaoTao/iChatRoom/blob/master/previous.jpg) 
+
+Now: 
+![now](https://github.com/ZihaoTao/iChatRoom/blob/master/now.jpg) 
 
